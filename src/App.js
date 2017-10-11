@@ -1,32 +1,66 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Division from './Division'
+import Division from './Division';
+import Approach from './Approach';
+import './App.css';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
+class DrawerSimpleExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false
+        };
+    }
+
+    handleToggle = () => this.setState({
+        open: !this.state.open
+    });
+
+    handleClose = () => this.setState({open: false});
+
+    render() {
+        return (
+            <div>
+                <AppBar
+                    onClick={this.handleToggle}
+                    title="Open Data Science Conference Examples"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+                <Drawer
+                    docked={false}
+                    width={200}
+                    open={this.state.open}
+                    onRequestChange={(open) => this.setState({open})}>
+                    <MenuItem onClick={this.handleClose}>
+                        <Link to="/Division">Division</Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleClose}>
+                        <Link to="/approach">Conceptual Approach</Link>
+                    </MenuItem>
+                </Drawer>
+            </div>
+        );
+    }
+}
 class App extends Component {
     render() {
         return (
-            <Router>
-                <div>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link to="/topics">Topics</Link>
-                        </li>
-                    </ul>
-
-                    <hr/>
-
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/topics" component={Topics}/>
-                    <Route path="/division" component={Division}/>
-                </div>
-            </Router>
+            <MuiThemeProvider>
+                <Router>
+                    <div>
+                        <DrawerSimpleExample/>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/about" component={About}/>
+                        <Route path="/topics" component={Topics}/>
+                        <Route path="/division" component={Division}/>
+                        <Route path="/approach" component={Approach}/>
+                    </div>
+                </Router>
+            </MuiThemeProvider>
         )
     }
 };
