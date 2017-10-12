@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import Division from './Division';
 import Approach from './Approach';
 import './App.css';
