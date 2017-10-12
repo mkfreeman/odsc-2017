@@ -50,7 +50,7 @@ class App extends Component {
     render() {
         return (
             <MuiThemeProvider>
-                <Router basename="/odsc-2017">
+                <Router>
                     <div>
                         <DrawerSimpleExample/>
                         <Route exact path="/" component={Home}/>
