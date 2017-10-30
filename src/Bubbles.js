@@ -54,6 +54,10 @@ class Bubbles extends Component {
 
         bubbles
             .exit()
+            .transition()
+            .duration(this.props.config.duration)
+            .attr('r', 0)
+            .delay(this.props.config.delay)
             .remove();
     }
     render() {

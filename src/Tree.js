@@ -112,6 +112,7 @@ class Tree extends Component {
         // Append text to node
         nodeEnter
             .append("text")
+            .style('font-size', "2em")
             .attr("x", function (d) {
                 return -20
             })

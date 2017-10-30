@@ -35,12 +35,21 @@ class DrawerSimpleExample extends React.Component {
                     width={200}
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}>
-                    <MenuItem onClick={this.handleClose}>
-                        <Link to="/Division">Division</Link>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleClose}>
-                        <Link to="/approach">Conceptual Approach</Link>
-                    </MenuItem>
+                    <Link to="/">
+                        <MenuItem onClick={this.handleClose}>
+                            Home
+                        </MenuItem>
+                    </Link>
+                    <Link to="/division">
+                        <MenuItem onClick={this.handleClose}>
+                            Division
+                        </MenuItem>
+                    </Link>
+                    <Link to="/approach">
+                        <MenuItem onClick={this.handleClose}>
+                            Conceptual Approach
+                        </MenuItem>
+                    </Link>
                 </Drawer>
             </div>
         );
@@ -66,7 +75,10 @@ class App extends Component {
 };
 const Home = () => (
     <div>
-        <h2>Home</h2>
+        <h3>Resources used in&nbsp;
+            <a href="http://mfviz.com" target="_blank">Michael Freeman's</a>&nbsp;talk on
+            <em>Visualizing Statistical and Machine Learning Concepts</em>.
+        </h3>
     </div>
 )
 

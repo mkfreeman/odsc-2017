@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import Bubbles from './Bubbles';
 import * as d3 from 'd3';
 
+// Number of states
+const maxState = 4;
 // Compute data
 const getConfig = function (stage) {
     // Defaults
@@ -16,11 +18,14 @@ const getConfig = function (stage) {
     // Per stage
     switch (stage) {
         case 0:
-            fill = '#26a69a';
+            circles = [];
             break;
         case 1:
+            fill = '#26a69a';
             break;
         case 2:
+            break;
+        case 3:
             circles = d3
                 .range(0, 20)
                 .map(function (d) {
@@ -71,7 +76,7 @@ class Division extends Component {
                 ? -1
                 : 1;
             var newState = this.state.progress + change;
-            if (newState < 3 && newState >= 0) {
+            if (newState < maxState && newState >= 0) {
                 this.setState({progress: newState});
             }
         }
