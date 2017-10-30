@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import Division from './Division';
 import Approach from './Approach';
+import Bounce from './Bounce';
 import './App.css';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -45,6 +46,11 @@ class DrawerSimpleExample extends React.Component {
                             Division
                         </MenuItem>
                     </Link>
+                    <Link to="/bounce">
+                        <MenuItem onClick={this.handleClose}>
+                            Bounce
+                        </MenuItem>
+                    </Link>
                     <Link to="/approach">
                         <MenuItem onClick={this.handleClose}>
                             Conceptual Approach
@@ -63,10 +69,9 @@ class App extends Component {
                     <div>
                         <DrawerSimpleExample/>
                         <Route exact path="/" component={Home}/>
-                        <Route path="/about" component={About}/>
-                        <Route path="/topics" component={Topics}/>
-                        <Route path="/division" component={Division}/>
+                        <Route path="/division" render={(props) => (<Division maxState={4} />)}/>
                         <Route path="/approach" component={Approach}/>
+                        <Route path="/bounce" render={(props) => (<Bounce maxState={2} />)}/>
                     </div>
                 </Router>
             </MuiThemeProvider>
@@ -81,48 +86,4 @@ const Home = () => (
         </h3>
     </div>
 )
-
-const About = () => (
-    <div>
-        <h2>About</h2>
-    </div>
-)
-
-const Topic = ({match}) => (
-    <div>
-        <h3>{match.params.topicId}</h3>
-    </div>
-)
-
-const Topics = ({match}) => (
-    <div>
-        <h2>Topics</h2>
-        <ul>
-            <li>
-                <Link to={`${match.url}/rendering`}>
-                    Rendering with React
-                </Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/components`}>
-                    Components
-                </Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/props-v-state`}>
-                    Props v. State
-                </Link>
-            </li>
-        </ul>
-
-        <Route path={`${match.url}/:topicId`} component={Topic}/>
-        <Route
-            exact
-            path={match.url}
-            render={() => (
-            <h3>Please select a topic.</h3>
-        )}/>
-    </div>
-)
-
 export default App;
