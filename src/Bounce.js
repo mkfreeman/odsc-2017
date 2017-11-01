@@ -60,7 +60,7 @@ class Bounce extends Stepper {
         let config = getConfig(this.state.progress);
         return <div>
                  <div className="labels">
-                   <h1>Bounce</h1>
+                   <h1>Bouncing</h1>
                    <p>(use arrow keys to step through stages)</p>
                  </div>
                  <Bubbles config={ config } />

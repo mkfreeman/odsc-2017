@@ -34,19 +34,19 @@ class DrawerSimpleExample extends React.Component {
                                                                                                     open
                                                                                                 }) }>
                 <Link to="/">
-                <MenuItem onClick={ this.handleClose }> Home
+                <MenuItem onClick={ this.handleClose }>Resources
                 </MenuItem>
                 </Link>
                 <Link to="/division">
-                <MenuItem onClick={ this.handleClose }> Division
+                <MenuItem onClick={ this.handleClose }>Division
                 </MenuItem>
                 </Link>
                 <Link to="/bounce">
-                <MenuItem onClick={ this.handleClose }> Bounce
+                <MenuItem onClick={ this.handleClose }>Bouncing
                 </MenuItem>
                 </Link>
                 <Link to="/approach">
-                <MenuItem onClick={ this.handleClose }> Conceptual Approach
+                <MenuItem onClick={ this.handleClose }>Conceptual Approach
                 </MenuItem>
                 </Link>
               </Drawer>
@@ -79,8 +79,8 @@ const Home = () => (
     <div className="container">
       <h1>Resources</h1>
       <p>There resources were used in <a href="http://mfviz.com" target="_blank">Michael Freeman's</a> talk on
-        <em>Visualizing Statistical and Machine Learning Concepts</em> at <a href="https://odsc.com/california" target="_blank">Open Data Science Conference</a> West
-        2017. See side navigation menu for small demos, or the links below for external sites:
+        <em>Visualizing Statistical and Machine Learning Concepts</em> at <a href="https://odsc.com/california" target="_blank">Open Data Science Conference</a> in 2017.
+        See side navigation menu for small demos, or the links below for external sites:
       </p>
       <ul>
         <li><a href="http://mfviz.com/hierarchical-models" target="_blank">A Visual Introduction to Hierarchical Modeling</a></li>
