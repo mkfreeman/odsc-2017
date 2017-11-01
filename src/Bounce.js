@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Bubbles from "./Bubbles";
 import Stepper from './Stepper';
 
@@ -18,31 +18,33 @@ let data = [
 let fills = ['#26a69a', '#26a69a'];
 
 let duration = 5000;
-let delay = (d,i) => {return Math.random() * 100 * 5000 / 500};
+let delay = (d, i) => {
+    return Math.random() * 100 * 5000 / 500
+};
 let ease = d3.easeBounce;
 let r = 7;
-let cx = (d,i) => i * 20;
+let cx = (d, i) => i * 20;
 let cy = (d, i) => d;
 
-const getConfig = function (stage) {
-    
+const getConfig = function(stage) {
+
     let dataShown = data[stage];
     console.log(dataShown)
     return {
-        type:'bubbles',
-        r:r,
-        footerText:"Bouncing",
-        ease:ease,
-        data:dataShown,
-        shown:1,
-        header:'Bubbles',
-        cx:cx,
-        fill:fills[stage],
-        cy:cy,
-        delay:delay,
-        duration:duration, 
-        height:window.innerHeight - 80,
-        width:window.innerWidth
+        type: 'bubbles',
+        r: r,
+        footerText: "Bouncing",
+        ease: ease,
+        data: dataShown,
+        shown: 1,
+        header: 'Bubbles',
+        cx: cx,
+        fill: fills[stage],
+        cy: cy,
+        delay: delay,
+        duration: duration,
+        height: window.innerHeight - 80,
+        width: window.innerWidth
     }
 }
 
@@ -51,12 +53,18 @@ class Bounce extends Stepper {
     constructor(props) {
         super(props);
         this.state = {
-            progress:0
+            progress: 0
         }
     }
     render() {
         let config = getConfig(this.state.progress);
-        return <Bubbles config={config}/>
+        return <div>
+                 <div className="labels">
+                   <h1>Bounce</h1>
+                   <p>(use arrow keys to step through stages)</p>
+                 </div>
+                 <Bubbles config={ config } />
+               </div>
     }
 }
 

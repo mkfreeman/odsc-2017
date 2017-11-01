@@ -1,4 +1,6 @@
-import {Component} from 'react';
+import { Component } from 'react';
+import './Stepper.css';
+
 class Stepper extends Component {
     constructor(props) {
         super(props)
@@ -20,7 +22,9 @@ class Stepper extends Component {
                 : 1;
             var newState = this.state.progress + change;
             if (newState < this.props.maxState && newState >= 0) {
-                this.setState({progress: newState});
+                this.setState({
+                    progress: newState
+                });
             }
         }
     }

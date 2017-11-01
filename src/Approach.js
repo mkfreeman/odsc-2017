@@ -1,11 +1,17 @@
 // Approach
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Tree from './Tree';
 import * as d3 from 'd3';
 
 // Function to get configuration
-const getConfig = function (stage) {
-    return {data: networkData, depth: stage, duration: 500, height: window.innerHeight, width: window.innerWidth}
+const getConfig = function(stage) {
+    return {
+        data: networkData,
+        depth: stage,
+        duration: 500,
+        height: window.innerHeight,
+        width: window.innerWidth
+    }
 }
 
 // Approach class
@@ -30,7 +36,9 @@ class Approach extends Component {
                 : 1;
             var newState = this.state.progress + change;
             if (newState < 5 && newState >= 1) {
-                this.setState({progress: newState});
+                this.setState({
+                    progress: newState
+                });
             }
         }
     }
@@ -48,7 +56,11 @@ class Approach extends Component {
         var config = getConfig(this.state.progress);
         return (
             <div>
-                <Tree config={config}/>
+              <div className="labels">
+                <h1>Conceptual Approach</h1>
+                <p>(use arrow keys to step through stages)</p>
+              </div>
+              <Tree config={ config } />
             </div>
         )
     }

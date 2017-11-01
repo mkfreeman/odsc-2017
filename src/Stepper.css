@@ -1,0 +1,14 @@
+.labels {
+    position: absolute;
+    margin-left: 5%;
+}
+
+.labels h1 {
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+
+.labels p {
+    margin-top: 0px;
+    opacity: .5
+}
