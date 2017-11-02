@@ -2,12 +2,11 @@
 
 # Set up
 library(dplyr) # data wrangling
-library(lme4) # modeling
 library(ggplot2) # visualization
 
-# Parameters for generating faculty salary data
+# Generating faculty salary data
 departments <- c('sociology', 'biology', 'english', 'informatics', 'statistics')
-base.salaries <- c(40000, 50000, 60000, 70000, 180000) # different intercepts
+base.salaries <- c(40000, 50000, 60000, 70000, 80000) # different intercepts
 annual.raises <- c(2000, 500, 500, 1700, 500) # different slopes
 faculty.per.dept <- 20
 total.faculty <- faculty.per.dept * length(departments)
