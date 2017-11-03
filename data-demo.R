@@ -16,7 +16,7 @@ ids <- 1:total.faculty
 department <- rep(departments, faculty.per.dept)
 experience <- floor(runif(total.faculty, 0, 10)) # randomly vary experience level
 bases <- rep(base.salaries, faculty.per.dept) * runif(total.faculty, .9, 1.1) # noise
-raises <- rep(annual.raises, faculty.per.dept) * runif(total.faculty, .5, 1.1) # noise
+raises <- rep(annual.raises, faculty.per.dept) * runif(total.faculty, .9, 1.1) # noise
 df <- data.frame(ids, department, bases, experience, raises)
 
 # Generate salaries (base + experience * raise)

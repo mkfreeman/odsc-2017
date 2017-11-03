@@ -1,7 +1,7 @@
 // Network diagram Largely derived from:
 // http://stackoverflow.com/questions/38310768/d3-js-v4-wacky-link-transition-in
 // - collapsible-tree-example
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Tree.css';
 import * as d3 from 'd3';
 
@@ -27,7 +27,7 @@ class Tree extends Component {
         var i = 0;
         this
             .root
-            .each(function (d) {
+            .each(function(d) {
                 d.id = d.data.name + i;
                 i++;
             });
@@ -61,7 +61,7 @@ class Tree extends Component {
     update() {
         console.log('update!')
         // Link connector function
-        var connector = function (d) {
+        var connector = function(d) {
             return "M" + d.x + "," + d.y + "C" + d.x + "," + (d.y + d.parent.y) / 2 + " " + d.parent.x + "," + (d.y + d.parent.y) / 2 + " " + d.parent.x + "," + d.parent.y;
         };
 
@@ -72,7 +72,7 @@ class Tree extends Component {
             links = nodes.slice(1);
 
         // Normalize for fixed-depth.
-        nodes.forEach(function (d) {
+        nodes.forEach(function(d) {
             d.y = d.depth * this.props.config.height / 4;
         }.bind(this));
 
@@ -80,7 +80,7 @@ class Tree extends Component {
         var node = this
             .g
             .selectAll("g.node")
-            .data(nodes, function (d) {
+            .data(nodes, function(d) {
                 return d.id
             });
 
@@ -89,7 +89,7 @@ class Tree extends Component {
             .enter()
             .append("g")
             .attr("class", "node")
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 var x = d.parent === null
                     ? d.x0
                     : d.parent.x;
@@ -103,7 +103,7 @@ class Tree extends Component {
         nodeEnter
             .append("circle")
             .attr("r", 1e-6)
-            .style("fill", function (d) {
+            .style("fill", function(d) {
                 return d._children
                     ? "lightsteelblue"
                     : "#d3d3d3";
@@ -112,13 +112,13 @@ class Tree extends Component {
         // Append text to node
         nodeEnter
             .append("text")
-            .style('font-size', "2em")
-            .attr("x", function (d) {
+            .style('font-size', "1.5em")
+            .attr("x", function(d) {
                 return -20
             })
             .attr("dy", ".35em")
             .attr("text-anchor", 'end')
-            .text(function (d) {
+            .text(function(d) {
                 return d.data.name;
             })
             .style("fill-opacity", 1e-6);
@@ -128,17 +128,18 @@ class Tree extends Component {
             .merge(nodeEnter)
             .transition()
             .duration(this.props.config.duration)
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 if (d.id == 'Data3') {
                     console.log('data 3 x ', d.x)
-                };
+                }
+                ;
                 return "translate(" + d.x + "," + d.y + ")";
             });
 
         nodeUpdate
             .select("circle")
             .attr("r", 14.5)
-            .style("fill", function (d) {
+            .style("fill", function(d) {
                 return d._children
                     ? "lightsteelblue"
                     : "#d3d3d3";
@@ -153,7 +154,7 @@ class Tree extends Component {
             .exit()
             .transition()
             .duration(this.props.config.duration)
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 return "translate(" + d.parent.x + "," + d.parent.y + ")";
             })
             .remove();
@@ -170,7 +171,7 @@ class Tree extends Component {
         var link = this
             .g
             .selectAll("path.link")
-            .data(links, function (link) {
+            .data(links, function(link) {
                 var id = link.id + '->' + link.parent.id;
                 return id;
             });
@@ -186,7 +187,7 @@ class Tree extends Component {
             .enter()
             .insert("path", "g")
             .attr("class", "link")
-            .attr("d", function (d) {
+            .attr("d", function(d) {
                 var o = {
                     x: d.parent.x,
                     y: d.parent.y,
@@ -210,7 +211,7 @@ class Tree extends Component {
             .exit()
             .transition()
             .duration(this.props.config.duration)
-            .attr("d", function (d) {
+            .attr("d", function(d) {
                 var o = {
                     x: d.parent.x,
                     y: d.parent.y,
@@ -225,12 +226,10 @@ class Tree extends Component {
 
     }
     render() {
-        return (<svg
-            width={this.props.config.width}
-            height={this.props.config.height}
-            ref={(node) => {
-            this.root = node;
-        }}/>);
+        return (<svg width={ this.props.config.width } height={ this.props.config.height } ref={ (node) => {
+                                                                                     this.root = node;
+                                                                                 } } />);
     }
-};
+}
+;
 export default Tree;

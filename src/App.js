@@ -29,7 +29,7 @@ class DrawerSimpleExample extends React.Component {
     render() {
         return (
             <div>
-              <AppBar onClick={ this.handleToggle } title="ODSC 2017" iconClassNameRight="muidocs-icon-navigation-expand-more" />
+              <AppBar className="app-bar" onClick={ this.handleToggle } title="ODSC 2017" iconClassNameRight="muidocs-icon-navigation-expand-more" />
               <Drawer docked={ false } width={ 200 } open={ this.state.open } onRequestChange={ (open) => this.setState({
                                                                                                     open
                                                                                                 }) }>
@@ -78,16 +78,18 @@ class App extends Component {
 const Home = () => (
     <div className="container">
       <h1>Resources</h1>
-      <p>There resources were used in <a href="http://mfviz.com" target="_blank">Michael Freeman's</a> talk on
+      <p>These resources were used in <a href="http://mfviz.com" target="_blank">Michael Freeman's</a> talk on
         <em>Visualizing Statistical and Machine Learning Concepts</em> at <a href="https://odsc.com/california" target="_blank">Open Data Science Conference</a> in 2017.
-        See side navigation menu for small demos, or the links below for external sites:
+        See side navigation menu for small demos, or the links below for external sites.
       </p>
       <ul>
+        <li><a href="http://mfviz.com/odsc-2017-slides" target="_blank">Interactive slides from the presentation</a></li>
         <li><a href="http://mfviz.com/hierarchical-models" target="_blank">A Visual Introduction to Hierarchical Modeling</a></li>
         <li><a href="http://mfviz.com/central-limit" target="_blank">An Explanation of the Central Limit Theorem</a></li>
         <li><a href="https://students.brown.edu/seeing-theory/compound-probability/index.html#third" target="_blank">Seeing Theory's Conditional Probability Visualization</a></li>
         <li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" target="_blank">Tony Chu's Visual Introduction to Machine Learning</a></li>
       </ul>
+      <p>Code used to build this website + demos is available <a href="https://github.com/mkfreeman/odsc-2017" target="_blank">here</a>.</p>
     </div>
 )
 export default App;
